@@ -33,10 +33,7 @@ void    free_data(t_info *data/*, t_graph *graph*/)
     int i = -1;
     while (data->rooms[++i])
         ft_strdel(&data->rooms[i]);
-    i = -1;
-    while (data->solution[++i])
-        // free(data->solution[i]);
-        ft_strdel(&data->solution[i]);
+
     i = -1;
     while (data->file[++i])
         ft_strdel(&data->file[i]);
@@ -47,6 +44,10 @@ void    free_data(t_info *data/*, t_graph *graph*/)
     i = -1;
     while (data->vertex[++i])
         ft_strdel(&data->vertex[i]);
+    i = -1;
+    while (data->solution[++i])
+        // free(data->solution[i]);
+        ft_strdel(&data->solution[i]);
 
 
 }
@@ -80,8 +81,6 @@ void printGraph(t_graph *graph, t_info *data)
         }
         j++;
     }
-    free_data(data/*, graph*/);
-    free_graph(graph);
 
 }
 
@@ -96,7 +95,7 @@ int DFS(t_graph *graph, t_info *data, int index)
     // data->solution[data->curr] = ft_strnew(sizeof(char *)/* * data->roomcount*/);
     int i = -1;
     while (++i < data->roomcount){
-        data->solution[data->curr] = (char *)ft_memalloc(sizeof(char *) + 1);
+        data->solution[data->curr] = (char *)ft_memalloc(sizeof(char *));
     }
     data->solution[i] = NULL;
     data->solution[data->curr] = ft_strdup(graph->name[index]);
@@ -107,12 +106,13 @@ int DFS(t_graph *graph, t_info *data, int index)
         if (connectedVertex == targetindex)
         {
             data->solution[data->curr] = ft_strdup(data->endstr);
-            // data->solution[data->curr + 1] = NULL;
             printGraph(graph, data);
+            free_data(data/*, graph*/);
+            free_graph(graph);
             exit(0);
         }
         else if (graph->visited[connectedVertex] == 0){
-            ft_strdel(&data->solution[data->curr]);
+            free(data->solution[data->curr]);
             DFS(graph, data, connectedVertex);
         }
         temp = temp->next;
