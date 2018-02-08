@@ -28,38 +28,38 @@ void addEdgeString(t_graph *graph, char *src, char *dest)
     graph->adjLists[destindex] = newNode; 
 }
 
-void    free_data(t_info *data/*, t_graph *graph*/)
-{
-    int i = -1;
-    while (data->rooms[++i])
-        ft_strdel(&data->rooms[i]);
+// void    free_data(t_info *data/*, t_graph *graph*/)
+// {
+//     int i = -1;
+//     while (data->rooms[++i])
+//         ft_strdel(&data->rooms[i]);
 
-    i = -1;
-    while (data->file[++i])
-        ft_strdel(&data->file[i]);
-    free(data->file);
-    i = -1;
-    while (data->pipes[++i])
-        ft_strdel(&data->pipes[i]);
-    i = -1;
-    while (data->vertex[++i])
-        ft_strdel(&data->vertex[i]);
-    i = -1;
-    while (data->solution[++i])
-        // free(data->solution[i]);
-        ft_strdel(&data->solution[i]);
+//     i = -1;
+//     while (data->file[++i])
+//         ft_strdel(&data->file[i]);
+//     free(data->file);
+//     i = -1;
+//     while (data->pipes[++i])
+//         ft_strdel(&data->pipes[i]);
+//     i = -1;
+//     while (data->vertex[++i])
+//         ft_strdel(&data->vertex[i]);
+//     i = -1;
+//     while (data->solution[++i])
+//         // free(data->solution[i]);
+//         ft_strdel(&data->solution[i]);
 
 
-}
+// }
 
-static void free_graph(t_graph *graph)
-{
-    // int i;
-    // i = -1;
-    free(graph->visited);
-    // while (graph->name[++i])
-    //     ft_strdel(&graph->name[i]);
-}
+// static void free_graph(t_graph *graph)
+// {
+//     // int i;
+//     // i = -1;
+//     free(graph->visited);
+//     // while (graph->name[++i])
+//     //     ft_strdel(&graph->name[i]);
+// }
 
 void printGraph(t_graph *graph, t_info *data)
 {
@@ -100,8 +100,8 @@ int DFS(t_graph *graph, t_info *data, int index)
         {
             data->solution[data->curr] = ft_strdup(data->endstr);
             printGraph(graph, data);
-            free_data(data/*, graph*/);
-            free_graph(graph);
+            // free_data(data, graph);
+            // free_graph(graph);
             exit(0);
         }
         else if (graph->visited[connectedVertex] == 0){
