@@ -57,8 +57,8 @@ t_node 	*createNode(int v);
 t_graph *createGraph(t_info *data);
 void 	addEdge(t_info *data, t_graph *graph, int src, int dest);
 void    addEdgeString(t_graph *graph, char *src, char *dest);
-void 	printGraph(/*t_graph *graph,*/t_info *data);
-void 	DFS(t_graph *graph, t_info *data, int targetindex);
+void 	printGraph(t_graph *graph,t_info *data);
+int 	DFS(t_graph *graph, t_info *data, int targetindex);
 void    find_start(t_info *data);
 void    validate(t_info *data);
 int     check_start_room(t_info *data);
@@ -72,6 +72,7 @@ int     find_target_index(t_graph *graph, char *src);
 int     find_start_index(t_graph *graph, char *src);
 int     find_src_index(t_graph *graph, char *src);
 int     find_dest_index(t_graph *graph, char *dest);
+void    free_data(t_info *data/*, t_graph *graph*/);
 
 #endif
 
