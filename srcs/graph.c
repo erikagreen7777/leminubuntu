@@ -67,7 +67,7 @@ void printGraph(t_graph *graph, t_info *data)
     // while (i < data->roomcount && (data->solution[i] != NULL))
     // {
     //     ft_printf("data->solution[%d]: %s\n", i, data->solution[i]);
-    //     i++;ß
+    //     i++;
     // }
     printf("graph->name: %s\n", graph->name[0]);
     int j = 1;
@@ -79,9 +79,9 @@ void printGraph(t_graph *graph, t_info *data)
             ft_printf("L%d-%s\n", i, data->solution[j]);
             i++;
         }
+        
         j++;
     }
-
 }
 
 int DFS(t_graph *graph, t_info *data, int index)
@@ -91,13 +91,6 @@ int DFS(t_graph *graph, t_info *data, int index)
     t_node *adjList = graph->adjLists[index];
     t_node *temp = adjList;
     graph->visited[index] = 1;
-
-    // data->solution[data->curr] = ft_strnew(sizeof(char *)/* * data->roomcount*/);
-    int i = -1;
-    while (++i < data->roomcount){
-        data->solution[data->curr] = (char *)ft_memalloc(sizeof(char *));
-    }
-    data->solution[i] = NULL;
     data->solution[data->curr] = ft_strdup(graph->name[index]);
     data->curr++;
     while(temp != NULL) 
@@ -112,13 +105,13 @@ int DFS(t_graph *graph, t_info *data, int index)
             exit(0);
         }
         else if (graph->visited[connectedVertex] == 0){
-            free(data->solution[data->curr]);
+            // free(data->solution[data->curr]);
             DFS(graph, data, connectedVertex);
         }
         temp = temp->next;
     }
-    if (temp == NULL)
-        ft_error("no solution found ERROR");
+    // if (temp == NULL)
+    //     ft_error("no solution found ERROR");
     return(1);  
 }
 

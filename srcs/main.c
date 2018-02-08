@@ -14,8 +14,8 @@ static void build_file(t_info *data)
     int i;
     i = 0;
     data->file = (char **)ft_memalloc(sizeof(char **) * 5000);
-    while (get_next_line(data->fd, &data->line) > 0)
-    // while (get_next_line(0, &data->line) > 0)
+    // while (get_next_line(data->fd, &data->line) > 0)
+    while (get_next_line(0, &data->line) > 0)
     {
         data->file[i] = (data->line);
         i++;
@@ -57,9 +57,9 @@ t_graph *createGraph(t_info *data)
 {
     int i;
     i = 0;
+    
     t_graph *graph = malloc(sizeof(t_graph));
     graph->numVertices = data->roomcount;
- 
     graph->name = malloc(data->roomcount * sizeof(char *));
     graph->adjLists = malloc(data->roomcount * sizeof(t_node *));
     
@@ -98,7 +98,6 @@ int main(int argc, char **argv)
     }
     data = (t_info *)ft_memalloc(sizeof(t_info));
     
-
     i_like_big_structs_and_i_cannot_lie(data);
     data->name = argv[1];
     build_file(data);
@@ -107,11 +106,9 @@ int main(int argc, char **argv)
     graph = createGraph(data);
     parse_pipes(data, graph);
     startindex = find_start_index(graph, data->startstr);
-    data->solution = (char **)ft_memalloc(sizeof(data->roomcount + 1));
+    data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
     data->curr = 0;
     DFS(graph, data, startindex);
-
-    // printGraph(graph, data);
     return (0);
 }
 
