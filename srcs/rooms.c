@@ -76,7 +76,7 @@ static void    check_room_duplicates(t_info *data)
 char    *room_trim(char *str)
 {
     int i = 0;
-    char *temp = (char *)ft_memalloc(sizeof(str));
+    char *temp = (char *)ft_memalloc(sizeof(str) + 1);
     ft_strcpy(temp, str);
     ft_bzero(str, sizeof(str));
     while (temp[i])
@@ -92,6 +92,7 @@ char    *room_trim(char *str)
         }
         i++;
     }
+    temp[i] = '\0';
     ft_strncpy(str, temp, i);
     ft_strdel(&temp);
     return (str);
