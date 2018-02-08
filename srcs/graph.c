@@ -35,6 +35,7 @@ void    free_data(t_info *data/*, t_graph *graph*/)
         ft_strdel(&data->rooms[i]);
     i = -1;
     while (data->solution[++i])
+        // free(data->solution[i]);
         ft_strdel(&data->solution[i]);
     i = -1;
     while (data->file[++i])
@@ -94,8 +95,10 @@ int DFS(t_graph *graph, t_info *data, int index)
 
     // data->solution[data->curr] = ft_strnew(sizeof(char *)/* * data->roomcount*/);
     int i = -1;
-    while (++i < data->roomcount)
-        data->solution[data->curr] = (char *)malloc(sizeof(char *) + 1);
+    while (++i < data->roomcount){
+        data->solution[data->curr] = (char *)ft_memalloc(sizeof(char *) + 1);
+    }
+    data->solution[i] = NULL;
     data->solution[data->curr] = ft_strdup(graph->name[index]);
     data->curr++;
     while(temp != NULL) 
@@ -104,12 +107,14 @@ int DFS(t_graph *graph, t_info *data, int index)
         if (connectedVertex == targetindex)
         {
             data->solution[data->curr] = ft_strdup(data->endstr);
-            data->solution[data->curr + 1] = NULL;
+            // data->solution[data->curr + 1] = NULL;
             printGraph(graph, data);
             exit(0);
         }
-        else if (graph->visited[connectedVertex] == 0)
+        else if (graph->visited[connectedVertex] == 0){
+            ft_strdel(&data->solution[data->curr]);
             DFS(graph, data, connectedVertex);
+        }
         temp = temp->next;
     }
     if (temp == NULL)
