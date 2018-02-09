@@ -14,8 +14,8 @@ static void build_file(t_info *data)
     int i;
     i = 0;
     data->file = (char **)ft_memalloc(sizeof(char **) * 5000);
-    // while (get_next_line(data->fd, &data->line) > 0)
-    while (get_next_line(0, &data->line) > 0)
+   while (get_next_line(data->fd, &data->line) > 0)
+     // while (get_next_line(0, &data->line) > 0)
     {
         data->file[i] = (data->line);
         i++;
@@ -31,7 +31,7 @@ static void build_file(t_info *data)
 
 static void i_like_big_structs_and_i_cannot_lie(t_info *data)
 {
-    char *filename = "maps/hardmap";
+    char *filename = "maps/42";
     data->fd = open(filename, O_RDONLY);
     data->start = -1;
     data->end = -1;
@@ -90,8 +90,8 @@ t_graph *createGraph(t_info *data)
 int main(int argc, char **argv)
 {
     t_info *data;
-    t_graph *graph;
-    int startindex;
+    // t_graph *graph;
+    // int startindex;
 
     if (argc == 1){
         ;
@@ -103,13 +103,29 @@ int main(int argc, char **argv)
     build_file(data);
     ants(data);
     validate(data);
-    graph = createGraph(data);
-    parse_pipes(data, graph);
-    startindex = find_start_index(graph, data->startstr);
-    data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
-    data->curr = 0;
-    DFS(graph, data, startindex);
+    // graph = createGraph(data);
+    // parse_pipes(data, graph);
+    // startindex = find_start_index(graph, data->startstr);
+    // data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
+    // data->curr = 0;
+    // DFS(graph, data, startindex);
+ 
     return (0);
 }
+
+/*
+Piscine_reloaded
+libft
+Filit
+Get-Next_line
+ft_ls
+minishel
+21sh
+42sh
+First_Internship
+Malloc
+Nm_otool
+ft_p
+*/
 
 

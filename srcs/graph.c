@@ -100,9 +100,10 @@ int DFS(t_graph *graph, t_info *data, int index)
         {
             data->solution[data->curr] = ft_strdup(data->endstr);
             printGraph(graph, data);
-            // free_data(data, graph);
-            // free_graph(graph);
-            exit(0);
+             // while (1){
+
+             // }
+		   	exit(0);
         }
         else if (graph->visited[connectedVertex] == 0){
             // free(data->solution[data->curr]);

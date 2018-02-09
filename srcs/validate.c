@@ -96,10 +96,19 @@ void    find_pipes(t_info *data)
     data->pipecount -= commentcount;
     commentsafterpipes(data);
     data->pipestart = data->linecount - data->pipecount;
-    // printf("data->end: %d\npipecount: %d\n", data->end, data->pipecount);
-    // printf("linecount: %d\ncomomentcount: %d\npipestart: %d\n", data->linecount, commentcount, data->pipestart);
+    printf("data->end: %d\npipecount: %d\n", data->end, data->pipecount);
+    printf("linecount: %d\ncomomentcount: %d\npipestart: %d\n", data->linecount, commentcount, data->pipestart);
     data->pipes = (char **)ft_memalloc(sizeof(data->pipes) * data->pipecount + 1);
     assign_pipes(data);
+    // if (data->pipecount == 0)
+    //     ft_error("find pipesERROR");
+    // data->pipecount -= commentcount;
+    // commentsafterpipes(data);
+    // data->pipestart = data->linecount - data->pipecount;
+    // printf("data->end: %d\npipecount: %d\n", data->end, data->pipecount);
+    // printf("linecount: %d\ncomomentcount: %d\npipestart: %d\n", data->linecount, commentcount, data->pipestart);
+    // data->pipes = (char **)ft_memalloc(sizeof(data->pipes) * data->pipecount + 1);
+    // assign_pipes(data);
 }
 
 void    validate(t_info *data)
@@ -114,7 +123,7 @@ void    validate(t_info *data)
         data->swap = 1;
     }
     // printf("after data->start: %d\nafter data->end: %d\nafter data->swap: %d\n", data->start, data->end, data->swap);
-    find_pipes(data);
+    // find_pipes(data);
     assign_rooms(data);
 }
 
