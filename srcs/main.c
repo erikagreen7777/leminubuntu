@@ -90,8 +90,8 @@ t_graph *createGraph(t_info *data)
 int main(int argc, char **argv)
 {
     t_info *data;
-    // t_graph *graph;
-    // int startindex;
+    t_graph *graph;
+    int startindex;
 
     if (argc == 1){
         ;
@@ -103,12 +103,12 @@ int main(int argc, char **argv)
     build_file(data);
     ants(data);
     validate(data);
-    // graph = createGraph(data);
-    // parse_pipes(data, graph);
-    // startindex = find_start_index(graph, data->startstr);
-    // data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
-    // data->curr = 0;
-    // DFS(graph, data, startindex);
+    graph = createGraph(data);
+    parse_pipes(data, graph);
+    startindex = find_start_index(graph, data->startstr);
+    data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
+    data->curr = 0;
+    DFS(graph, data, startindex);
  
     return (0);
 }

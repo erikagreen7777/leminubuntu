@@ -45,7 +45,7 @@ static int  check_room(char *str)
             spacecount++;
             if (!ft_isdigit(str[i + 1]))
                 return (1);
-            printf("i: %d\n", i);
+            // printf("i: %d\n", i);
         }
         i++;
     }
@@ -82,9 +82,7 @@ char    *room_trim(char *str)
     int i = 0;
     char *temp;
     temp = ft_strdup(str);
-    // char *temp = (char *)ft_memalloc(sizeof(str) + 1);
-    // ft_strcpy(temp, str);
-    ft_bzero(str, sizeof(str));
+    ft_strclr(str);
     while (temp[i])
     {
         if (temp[i] == ' ')
@@ -102,7 +100,6 @@ char    *room_trim(char *str)
         i++;
     }
     // temp[i] = '\0';
-    // printf("second i: %d\n", i);
     ft_strncpy(str, temp, i);
     ft_strdel(&temp);
     return (str);
