@@ -14,8 +14,8 @@ static void build_file(t_info *data)
     int i;
     i = 0;
     data->file = (char **)ft_memalloc(sizeof(char **) * 5000);
-   while (get_next_line(data->fd, &data->line) > 0)
-     // while (get_next_line(0, &data->line) > 0)
+   // while (get_next_line(data->fd, &data->line) > 0)
+     while (get_next_line(0, &data->line) > 0)
     {
         data->file[i] = (data->line);
         i++;
@@ -61,7 +61,7 @@ t_graph *createGraph(t_info *data)
     t_graph *graph = malloc(sizeof(t_graph));
     graph->numVertices = data->roomcount;
     graph->name = malloc(data->roomcount * sizeof(char *));
-    graph->adjLists = malloc(data->roomcount * sizeof(t_node *));
+    graph->adjLists = (t_node **)ft_memalloc(data->roomcount * sizeof(t_node *));
     
     graph->visited = malloc(data->roomcount * sizeof(int));
  
@@ -75,13 +75,6 @@ t_graph *createGraph(t_info *data)
         graph->index++;
         i++;
     }
-    // graph->index = 0;
-    // while (graph->index < data->roomcount)
-    // {
-    //     printf("graph->index: %d\tgraph->name[i]: %s\tstart: %s\tend: %s\n", graph->index, graph->name[graph->index], 
-    //         data->startstr, data->endstr);
-    //     graph->index++;
-    // }
     return (graph);
 }
 
@@ -104,9 +97,16 @@ int main(int argc, char **argv)
     ants(data);
     validate(data);
     graph = createGraph(data);
+    graph->index = 0;
+    while (graph->index < data->roomcount)
+    {
+        printf("graph->index: %d\t\tgraph->name[i]: %s\n", graph->index, graph->name[graph->index]);
+        graph->index++;
+    }
     parse_pipes(data, graph);
     startindex = find_start_index(graph, data->startstr);
-    data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
+    data->solution = malloc(data->roomcount * sizeof(char *));
+    // data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
     data->curr = 0;
     DFS(graph, data, startindex);
  

@@ -71,7 +71,7 @@ static void commentsafterpipes(t_info *data)
         data->linecount -= commentcount;
 }
 
-void    find_pipes(t_info *data)
+void    find_pipes(t_info *data) /****************************************************/
 {
     int i;
     i = 0;
@@ -82,24 +82,62 @@ void    find_pipes(t_info *data)
         if ((ft_strchr(data->file[i], '-')) && (i < data->end))
             ft_error("pipes in rooms ERROR");
         if ((ft_strchr(data->file[i], '-') || data->file[i][0] == '#') && i > data->end){
+            if (data->file[i][0] != '#'){
+                  data->pipestart = i;
+                  break;
+            }             
+        }
+        i++;
+    }
+    i = data->pipestart;
+    while (data->file[i])
+    {
+        if ((ft_strchr(data->file[i], '-') || data->file[i][0] == '#') && i > data->end){
             if (data->file[i][0] == '#'){
                 commentcount++;
             }
             data->pipecount++;
         }
-        // if (data->file[i][0] == '#' && i > data->end)
-
         i++;
     }
     if (data->pipecount == 0)
         ft_error("find pipesERROR");
     data->pipecount -= commentcount;
     commentsafterpipes(data);
-    data->pipestart = data->linecount - data->pipecount;
     // printf("data->end: %d\npipecount: %d\n", data->end, data->pipecount);
     // printf("linecount: %d\ncomomentcount: %d\npipestart: %d\n", data->linecount, commentcount, data->pipestart);
     data->pipes = (char **)ft_memalloc(sizeof(data->pipes) * data->pipecount + 1);
     assign_pipes(data);
+
+
+
+    // int i;
+    // i = 0;
+    // int commentcount = 0;
+
+    // while (data->file[i])
+    // {
+    //     if ((ft_strchr(data->file[i], '-')) && (i < data->end))
+    //         ft_error("pipes in rooms ERROR");
+    //     if ((ft_strchr(data->file[i], '-') || data->file[i][0] == '#') && i > data->end){
+    //         if (data->file[i][0] == '#'){
+    //             commentcount++;
+    //         }
+    //         data->pipecount++;
+    //     }
+    //     // if (data->file[i][0] == '#' && i > data->end)
+
+    //     i++;
+    // }
+    // if (data->pipecount == 0)
+    //     ft_error("find pipesERROR");
+    // data->pipecount -= commentcount;
+    // commentsafterpipes(data);
+    // data->pipestart = data->linecount - data->pipecount;
+    // // printf("data->end: %d\npipecount: %d\n", data->end, data->pipecount);
+    // // printf("linecount: %d\ncomomentcount: %d\npipestart: %d\n", data->linecount, commentcount, data->pipestart);
+    // data->pipes = (char **)ft_memalloc(sizeof(data->pipes) * data->pipecount + 1);
+    // assign_pipes(data);
 }
 
 void    validate(t_info *data)

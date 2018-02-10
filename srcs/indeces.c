@@ -7,10 +7,13 @@ int find_target_index(t_graph *graph, char *src)
     while (graph->name[graph->index])
     {
         if (ft_strstr(graph->name[graph->index], src)){
-            targetindex = graph->index;
-            // printf("srcindex: %d\tsrc: %s\n", srcindex, src);
-            return (targetindex);
-        }
+            if (ft_strcmp(graph->name[graph->index], src) == 0)
+            {
+                targetindex = graph->index;
+                // printf("targetindex: %d\tsrc: %s\n", targetindex, src);
+                return (targetindex);
+            }
+         }
         graph->index++;
     }
     return (0);
@@ -23,9 +26,12 @@ int find_start_index(t_graph *graph, char *src)
     while (graph->name[graph->index])
     {
         if (ft_strstr(graph->name[graph->index], src)){
-            startindex = graph->index;
-            // printf("srcindex: %d\tsrc: %s\n", srcindex, src);
-            return (startindex);
+            if (ft_strcmp(graph->name[graph->index], src) == 0)
+            {
+                startindex = graph->index;
+                printf("startindex: %d\tsrc: %s\n", startindex, src);
+                return (startindex);
+            }
         }
         graph->index++;
     }
@@ -39,9 +45,12 @@ int find_src_index(t_graph *graph, char *src)
     while (graph->name[graph->index])
     {
         if (ft_strstr(graph->name[graph->index], src)){
-            srcindex = graph->index;
-            // printf("srcindex: %d\tsrc: %s\n", srcindex, src);
-            return (srcindex);
+            if (ft_strcmp(graph->name[graph->index], src) == 0)
+            {
+                srcindex = graph->index;
+                // printf("srcindex: %d\tsrc: %s\n", srcindex, src);
+                return (srcindex);
+            }
         }
         graph->index++;
     }
@@ -55,9 +64,12 @@ int find_dest_index(t_graph *graph, char *dest)
     while (graph->name[graph->index])
     {
         if (ft_strstr(graph->name[graph->index], dest)){
-            destindex = graph->index;
-            // printf("destindex: %d\tdest:%s\n", destindex, dest);
-            return (destindex);
+            if (ft_strcmp(graph->name[graph->index], dest) == 0)
+            {
+                destindex = graph->index;
+                // printf("destindex: %d\tdest:%s\n", destindex, dest);
+                return (destindex);
+            }
         }
         graph->index++;
     }

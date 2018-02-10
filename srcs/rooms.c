@@ -9,7 +9,7 @@ int      check_start_room(t_info *data)
         if ((data->file[data->start][0] != '#') && (data->file[data->start][0] != 'L'))
         {
             data->startstr = room_trim(data->file[data->start]);
-           printf("start str: %s\n", data->startstr);
+           // printf("start str: %s\n", data->startstr);
             return (1);
         }
     }
@@ -25,7 +25,7 @@ int      check_end_room(t_info *data)
         if ((data->file[data->end][0] != '#') && (data->file[data->end][0] != 'L'))
         {
             data->endstr = room_trim(data->file[data->end]);
-           printf("end str: %s\n", data->endstr);
+           // printf("end str: %s\n", data->endstr);
             return (1);
         }
     }
@@ -122,6 +122,7 @@ void    assign_rooms(t_info *data)
         {
             data->rooms[j] = ft_strdup(data->file[i]);
             room_trim(data->rooms[j]);
+            // printf("data->rooms[%d]: %s\n", j, data->rooms[j]);
             data->roomcount++;
             j++;
         }

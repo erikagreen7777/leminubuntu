@@ -18,48 +18,19 @@ void addEdgeString(t_graph *graph, char *src, char *dest)
     destindex = find_dest_index(graph, dest); 
 
     t_node *newNode = createNode(destindex);
+    // printf("dest: %s\t\t", dest);
     newNode->name = dest;
+    // printf("newNode->name: %s\n", newNode->name);
     newNode->next = graph->adjLists[srcindex];
     graph->adjLists[srcindex] = newNode; 
     
     newNode = createNode(srcindex);
     newNode->next = graph->adjLists[destindex];
     newNode->name = src;
+    // printf("newNode->name: %s\n", newNode->name);
     graph->adjLists[destindex] = newNode; 
 }
 
-// void    free_data(t_info *data/*, t_graph *graph*/)
-// {
-//     int i = -1;
-//     while (data->rooms[++i])
-//         ft_strdel(&data->rooms[i]);
-
-//     i = -1;
-//     while (data->file[++i])
-//         ft_strdel(&data->file[i]);
-//     free(data->file);
-//     i = -1;
-//     while (data->pipes[++i])
-//         ft_strdel(&data->pipes[i]);
-//     i = -1;
-//     while (data->vertex[++i])
-//         ft_strdel(&data->vertex[i]);
-//     i = -1;
-//     while (data->solution[++i])
-//         // free(data->solution[i]);
-//         ft_strdel(&data->solution[i]);
-
-
-// }
-
-// static void free_graph(t_graph *graph)
-// {
-//     // int i;
-//     // i = -1;
-//     free(graph->visited);
-//     // while (graph->name[++i])
-//     //     ft_strdel(&graph->name[i]);
-// }
 
 void printGraph(t_graph *graph, t_info *data)
 {
@@ -88,17 +59,21 @@ int DFS(t_graph *graph, t_info *data, int index)
 {
     int targetindex;
     targetindex = find_target_index(graph, data->endstr);
+    // printf("targetindex: %d\n", targetindex);
+
     t_node *adjList = graph->adjLists[index];
     t_node *temp = adjList;
+   
     graph->visited[index] = 1;
-    data->solution[data->curr] = ft_strdup(graph->name[index]);
+
+    data->solution[data->curr] = /*ft_strdup(*/graph->name[index]/*)*/;
     data->curr++;
     while(temp != NULL) 
     {
         int connectedVertex = temp->index;
         if (connectedVertex == targetindex)
         {
-            data->solution[data->curr] = ft_strdup(data->endstr);
+            data->solution[data->curr] = /*ft_strdup(*/data->endstr/*)*/;
             printGraph(graph, data);
              // while (1){
 
