@@ -52,6 +52,7 @@ static void i_like_big_structs_and_i_cannot_lie(t_info *data)
     data->swap = 0;
     data->vertex = NULL;
     data->startcount = 0;
+    data->printgraph = 0;
 }
 
 t_graph *createGraph(t_info *data)
@@ -110,6 +111,8 @@ int main(int argc, char **argv)
     // data->solution = (char **)ft_memalloc(sizeof(char *) * data->roomcount);
     data->curr = 0;
     DFS(graph, data, startindex);
+    if (data->printgraph == 0)
+        ft_error("no solution found ERROR");
  
     return (0);
 }

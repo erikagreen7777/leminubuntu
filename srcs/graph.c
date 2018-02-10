@@ -34,6 +34,7 @@ void addEdgeString(t_graph *graph, char *src, char *dest)
 
 void printGraph(t_graph *graph, t_info *data)
 {
+    data->printgraph = 1;
     int i = 0;
     // while (i < data->roomcount && (data->solution[i] != NULL))
     // {
@@ -50,7 +51,6 @@ void printGraph(t_graph *graph, t_info *data)
             ft_printf("L%d-%s\n", i, data->solution[j]);
             i++;
         }
-        
         j++;
     }
 }
@@ -59,7 +59,6 @@ int DFS(t_graph *graph, t_info *data, int index)
 {
     int targetindex;
     targetindex = find_target_index(graph, data->endstr);
-    // printf("targetindex: %d\n", targetindex);
 
     t_node *adjList = graph->adjLists[index];
     t_node *temp = adjList;
@@ -70,11 +69,14 @@ int DFS(t_graph *graph, t_info *data, int index)
     data->curr++;
     while(temp != NULL) 
     {
+        printf("graph->name[graph->visited[index]: %s[%d]\n", graph->name[index], graph->visited[index]);
         int connectedVertex = temp->index;
         if (connectedVertex == targetindex)
         {
+
             data->solution[data->curr] = /*ft_strdup(*/data->endstr/*)*/;
             printGraph(graph, data);
+            // printf("printgraph: %d\n", data->printgraph); 
              // while (1){
 
              // }
@@ -86,8 +88,12 @@ int DFS(t_graph *graph, t_info *data, int index)
         }
         temp = temp->next;
     }
-    // if (temp == NULL)
-    //     ft_error("no solution found ERROR");
+    // printf("printgraph: %d\n", data->printgraph); 
+    // if (graph->visited[targetindex] == 0)
+    //     ft_error("no solution ERROR");
     return(1);  
 }
+
+//loop1
+//map14
 

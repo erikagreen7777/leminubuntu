@@ -7,6 +7,10 @@ void    find_start(t_info *data)
     while (data->file[i])
     {
         if (ft_strstr("##start", data->file[i])){
+            if (data->file[i + 1][0] == '#'){
+                 printf("data->file[i + 1]: %s\n", data->file[i + 1]);
+                 ft_error("err");
+            }
             data->start = i;
             data->startcount++;
             printf("startcount: %d\n", data->startcount);
