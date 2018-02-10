@@ -52,6 +52,7 @@ typedef struct  s_info
     char    *line;
     char    **vertex;
     char    **solution;
+    int     printgraph;
 }			t_info;
 
 t_node 	*createNode(int v);
