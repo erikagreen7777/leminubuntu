@@ -51,6 +51,7 @@ static void i_like_big_structs_and_i_cannot_lie(t_info *data)
     data->pipestart = 0;
     data->swap = 0;
     data->vertex = NULL;
+    data->startcount = 0;
 }
 
 t_graph *createGraph(t_info *data)
@@ -114,18 +115,8 @@ int main(int argc, char **argv)
 }
 
 /*
-Piscine_reloaded
-libft
-Filit
-Get-Next_line
-ft_ls
-minishel
-21sh
-42sh
-First_Internship
-Malloc
-Nm_otool
-ft_p
+test1
+map3
 */
 
 

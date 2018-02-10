@@ -8,11 +8,13 @@ void    find_start(t_info *data)
     {
         if (ft_strstr("##start", data->file[i])){
             data->start = i;
-            break;
+            data->startcount++;
+            printf("startcount: %d\n", data->startcount);
+            // break;
         }
         i++;
     }
-    if (data->start == -1)
+    if (data->start == -1 || data->startcount > 1)
         ft_error("find_startERROR");
     if (check_start_room(data)){
         ;
@@ -104,8 +106,6 @@ void    find_pipes(t_info *data) /**********************************************
         ft_error("find pipesERROR");
     data->pipecount -= commentcount;
     commentsafterpipes(data);
-    // printf("data->end: %d\npipecount: %d\n", data->end, data->pipecount);
-    // printf("linecount: %d\ncomomentcount: %d\npipestart: %d\n", data->linecount, commentcount, data->pipestart);
     data->pipes = (char **)ft_memalloc(sizeof(data->pipes) * data->pipecount + 1);
     assign_pipes(data);
 
