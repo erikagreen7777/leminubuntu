@@ -50,8 +50,8 @@ static int  check_room(char *str)
         i++;
     }
     if (spacecount != 3){
-        printf("str: %s\ti: %d\n", str, i);
-        ft_error("spacecount ERROR");
+        // printf("str: %s\ti: %d\n", str, i);
+        ft_error("\nspacecount ERROR");
     }
     return (0);
 }
@@ -67,8 +67,8 @@ static void    check_room_duplicates(t_info *data)
         while (j < data->roomcount)
         {
             if (ft_strcmp(data->rooms[i], data->rooms[j]) == 0){
-                printf("data->rooms[i]: %s\n", data->rooms[i]);
-                ft_error("rooms ERROR");
+                // printf("data->rooms[i]: %s\n", data->rooms[i]);
+                ft_error("\nrooms ERROR");
             }
             else
                 j++;
@@ -88,9 +88,9 @@ char    *room_trim(char *str)
         if (temp[i] == ' ')
         {
             if (check_room(temp) == 1){
-                printf("str: %s\n", str);
+                // printf("str: %s\n", str);
                 // printf("temp[%d]: %s\n", i, temp);
-                ft_error("room trim ERROR");
+                ft_error("\nroom trim ERROR");
             }
             else{
                 // printf("i: %d\n", i);
@@ -114,8 +114,8 @@ void    assign_rooms(t_info *data)
     while (data->file[i]/* && (i >= data->start && i <= data->end)*/)
     {
         if (data->file[i][0] == 'L'){
-            printf("data->file[%d]: %c\n", i, data->file[i][0]);
-            ft_error("assign rooms ERROR");
+            // printf("data->file[%d]: %c\n", i, data->file[i][0]);
+            ft_error("\nassign rooms ERROR");
         }
         // if (ft_strchr(data->file[i]))
         if ((!ft_strchr(data->file[i], '-') && (data->file[i][0] != '#'))/* && (i < data->pipestart)*/)
@@ -135,7 +135,7 @@ void    assign_rooms(t_info *data)
     //     i++;
     // }
     if (data->roomcount == 0)
-        ft_error("assign rooms 2ERROR");
+        ft_error("\nassign rooms 2ERROR");
     check_room_duplicates(data);
 
     // i = -1;

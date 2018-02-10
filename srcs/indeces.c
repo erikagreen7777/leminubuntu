@@ -29,7 +29,7 @@ int find_start_index(t_graph *graph, char *src)
             if (ft_strcmp(graph->name[graph->index], src) == 0)
             {
                 startindex = graph->index;
-                printf("startindex: %d\tsrc: %s\n", startindex, src);
+                // printf("startindex: %d\tsrc: %s\n", startindex, src);
                 return (startindex);
             }
         }

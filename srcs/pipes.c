@@ -26,21 +26,21 @@ void    assign_pipes(t_info *data)
 {
     int i = data->pipestart;
     int j = 0;
-    printf("data->pipestart: %d\n", data->pipestart);
+    // printf("data->pipestart: %d\n", data->pipestart);
     while (data->file[i])
     {
         if (!(ft_strchr(data->file[i], '-')) && (data->file[i][0] != '#')){
-            printf("data->file[%d]: %s\n", i, data->file[i]);
-            ft_error("not a pipe ERROR");
+            // printf("data->file[%d]: %s\n", i, data->file[i]);
+            ft_error("\nnot a pipe ERROR");
         }
         if (ft_strchr(data->file[i], '-'))
         {
             if ((is_pipe(data->file[i]) == 1)){
-                printf("data->file[%d]: %s\t", i, data->file[i]);
-                ft_error("is_pipe ERROR");
+                // printf("data->file[%d]: %s\t", i, data->file[i]);
+                ft_error("\nis_pipe ERROR");
             }
             if (((i < data->start || i < data->end)) || (i == data->start || i == data->end))
-                ft_error("assign pipes ERROR");
+                ft_error("\nassign pipes ERROR");
             else/* if (data->file[i][0] != '#')*/{
                 data->pipes[j] = ft_strdup(data->file[i]);
                 // printf("data->pipes[%d]: %s\n", j, data->pipes[j]);

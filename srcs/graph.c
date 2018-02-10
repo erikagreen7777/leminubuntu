@@ -32,7 +32,7 @@ void addEdgeString(t_graph *graph, char *src, char *dest)
 }
 
 
-void printGraph(t_graph *graph, t_info *data)
+void printGraph(t_info *data)
 {
     data->printgraph = 1;
     int i = 0;
@@ -41,7 +41,7 @@ void printGraph(t_graph *graph, t_info *data)
     //     ft_printf("data->solution[%d]: %s\n", i, data->solution[i]);
     //     i++;
     // }
-    printf("graph->name: %s\n", graph->name[0]);
+    ft_putchar('\n');
     int j = 1;
     while (j < data->roomcount && data->solution[j] != NULL)
     {     
@@ -69,13 +69,13 @@ int DFS(t_graph *graph, t_info *data, int index)
     data->curr++;
     while(temp != NULL) 
     {
-        printf("graph->name[graph->visited[index]: %s[%d]\n", graph->name[index], graph->visited[index]);
+        // printf("graph->name[graph->visited[index]: %s[%d]\n", graph->name[index], graph->visited[index]);
         int connectedVertex = temp->index;
         if (connectedVertex == targetindex)
         {
 
             data->solution[data->curr] = /*ft_strdup(*/data->endstr/*)*/;
-            printGraph(graph, data);
+            printGraph(data);
             // printf("printgraph: %d\n", data->printgraph); 
              // while (1){
 

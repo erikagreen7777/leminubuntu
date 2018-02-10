@@ -4,7 +4,7 @@ static void ants(t_info *data)
 {
     data->ants = ft_atoi(data->file[0]);
     if (data->ants < 1)
-        ft_error("ants ERROR");
+        ft_error("\nants ERROR");
 //    else
 //        printf("data->ants: %d\n", data->ants);
 
@@ -21,11 +21,11 @@ static void build_file(t_info *data)
         i++;
     }
     if (data->line == NULL)
-        ft_error("line ERROR");
+        ft_error("\nline ERROR");
     data->linecount = i;
     i = -1;
     while (data->file[++i])
-        ft_printf("data->file[%d]: %s\n", i, data->file[i]);
+        ft_printf("%s\n", data->file[i]);
     // printf("linecount: %d\n", data->linecount);
 }
 
@@ -99,12 +99,12 @@ int main(int argc, char **argv)
     ants(data);
     validate(data);
     graph = createGraph(data);
-    graph->index = 0;
-    while (graph->index < data->roomcount)
-    {
-        printf("graph->index: %d\t\tgraph->name[i]: %s\n", graph->index, graph->name[graph->index]);
-        graph->index++;
-    }
+    // graph->index = 0;
+    // while (graph->index < data->roomcount)
+    // {
+    //     printf("graph->index: %d\t\tgraph->name[i]: %s\n", graph->index, graph->name[graph->index]);
+    //     graph->index++;
+    // }
     parse_pipes(data, graph);
     startindex = find_start_index(graph, data->startstr);
     data->solution = malloc(data->roomcount * sizeof(char *));
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
     data->curr = 0;
     DFS(graph, data, startindex);
     if (data->printgraph == 0)
-        ft_error("no solution found ERROR");
+        ft_error("\nno solution found ERROR");
  
     return (0);
 }
