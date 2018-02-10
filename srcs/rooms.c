@@ -43,7 +43,7 @@ static int  check_room(char *str)
         if (str[i] == ' ')
         {   
             spacecount++;
-            if (!ft_isdigit(str[i + 1]))
+            if ((!ft_isdigit(str[i + 1])) && (str[i + 1] != '-' && !ft_isdigit(str[i + 2])))
                 return (1);
             // printf("i: %d\n", i);
         }
