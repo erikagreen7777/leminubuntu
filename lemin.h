@@ -40,6 +40,7 @@ typedef struct  s_info
     char    *endingroom;
     char    *endstr;
     char    **pipes;
+    int     startcount;
 	int 	linecount;
     int     roomcount;
     int     pipecount;
