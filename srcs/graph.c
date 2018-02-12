@@ -97,3 +97,24 @@ int DFS(t_graph *graph, t_info *data, int index)
 //loop1
 //map14
 
+/*void		print_graph(t_info *data)
+{
+	int		i;
+	int		j;
+
+	data->print_graph = 1;
+	j = 1;
+	i = 0;
+	ft_putchar('\n');
+	while (j < data->ants + 1 )
+	{
+		i = 1;
+		while (i < data->roomcount && data->solution[i] != NULL)
+		{
+			ft_printf("L%d-%s\n", j, data->solution[i]);
+			i++;
+		}
+		j++;
+	}
+}
+*/
